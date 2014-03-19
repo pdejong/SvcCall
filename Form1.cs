@@ -8,6 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using SiriusSVCcall.SvcCreate;
 using SiriusSVCcall.SvcSearch;
+using Microsoft.Win32;
+using System.IO;
+using System.Diagnostics;
 
 namespace WindowsFormsApplication1
 {
@@ -243,11 +246,54 @@ namespace WindowsFormsApplication1
 
 
                 }
+
                 else
+                if (CommandLineArgs[1].ToString() == "launch") 
                 {
-                    richTextBox_msg.AppendText("-> Argument(1) error!\n");
-                    this.WindowState = FormWindowState.Normal; // show window
-                }                
+                    RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\CSO\Phoenix", RegistryKeyPermissionCheck.ReadSubTree, System.Security.AccessControl.RegistryRights.ReadKey);
+                    string phoenix = null;
+                    if (key != null)
+                        try {
+                            string ID = key.GetValue("InstallDir").ToString();
+                            string Executable = key.GetValue("Executable").ToString();
+                            phoenix = Path.Combine(ID, Executable + ".exe");
+                        }
+                        catch (Exception ex) { }
+                    if (!File.Exists(phoenix)) {
+                        //if (args.Length > 1 && File.Exists(args[0])) m_Executable = args[1];
+                        //else {
+                        string location = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                        if (File.Exists(location = Path.Combine(Path.GetDirectoryName(location), "Phoenix.exe")))
+                            phoenix = location;
+                    }
+                    if ((CommandLineArgs.Length < 3)) 
+                    {
+                        richTextBox_msg.AppendText("Launch- invalid number of arguments\n");
+                        //this.WindowState = FormWindowState.Normal;
+                        return;
+                    }
+
+                    if (CommandLineArgs[2].ToString() == "PatientId") 
+                    {
+                        Process.Start(phoenix, string.Format("{0}=\\\"{1}\\\"", CommandLineArgs[2], CommandLineArgs[3]));
+                    }
+                    else
+                    if (CommandLineArgs[2].ToString() == "StudyId") 
+                    {
+                        Process.Start(phoenix, string.Format("{0}=\\\"{1}\\\"", CommandLineArgs[2], CommandLineArgs[3]));
+                    }
+                    else
+                    if (CommandLineArgs[2].ToString() == "AccessionNumber") 
+                    {
+                        Process.Start(phoenix, string.Format("{0}=\\\"{1}\\\"", CommandLineArgs[2], CommandLineArgs[3]));
+                    }
+
+
+                }
+                else {
+                        richTextBox_msg.AppendText("-> Argument(1) error!\n");
+                        this.WindowState = FormWindowState.Normal; // show window
+                    }                
 
             }
             else
@@ -257,6 +303,8 @@ namespace WindowsFormsApplication1
                 richTextBox_msg.AppendText("  create [PatID] [FN] [LN] [DOB in form of yyyymmdd] [Gender: M|F]\n");
                 richTextBox_msg.AppendText("  schedule [PatID] [Accession Number] [yyyymmddhhmm] [physicianName]\n");
                 richTextBox_msg.AppendText("  refraction [PatID] [OD_Sph] [OD_Cyl] [OD_Ax] [OD_UcVA] [OD_BCVA] [OS_CVD] [OS_Sph] [OS_Cyl] [OS_Ax] [OS_UcVA] [OS_BCVA] [OS_CVD]\n");
+                richTextBox_msg.AppendText("  launch PatientId [PatID]\n");
+                richTextBox_msg.AppendText("  launch AccessionNumber [PatID]\n");
                 richTextBox_msg.AppendText("As an option, the last argument may be: -debug- to display window instead of doing the action immediately.\n");
                 this.WindowState = FormWindowState.Normal; // show window
             }
