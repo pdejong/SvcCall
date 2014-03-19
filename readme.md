@@ -1,0 +1,1 @@
+Describes functionality for creating patient context on CSO Phoenix DB
