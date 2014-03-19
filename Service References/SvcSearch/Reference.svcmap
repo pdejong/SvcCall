@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="07a2afc7-0938-45c8-b7a7-3b085951defa" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:5100/PSvc/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="2a22a346-4752-4771-9886-75dac01d89e6" SourceId="1" SourceUrl="http://localhost:5100/PSvc/?xsd=xsd2" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="3fa0abed-f5f5-4f43-a353-ae2959b50e21" SourceId="1" SourceUrl="http://localhost:5100/PSvc/?disco" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="10360e31-7a75-4550-8194-a618a04c6ced" SourceId="1" SourceUrl="http://localhost:5100/PSvc/?xsd=xsd0" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="18194ca1-e149-4daa-944a-17d080477708" SourceId="1" SourceUrl="http://localhost:5100/PSvc/?xsd=xsd1" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="d76cbdfa-169b-4c47-87ca-3182163eed1e" SourceId="1" SourceUrl="http://localhost:5100/PSvc/?xsd=xsd3" />
+    <MetadataFile FileName="PSearchSvc.wsdl" MetadataType="Wsdl" ID="4b682e82-128d-4279-993e-ddf4e3cd888f" SourceId="1" SourceUrl="http://localhost:5100/PSvc/?wsdl" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="7abdeafa-9f82-49a7-9d86-6fecc027f2db" SourceId="1" SourceUrl="http://localhost:5100/PSvc/?xsd=xsd5" />
+    <MetadataFile FileName="item5.xsd" MetadataType="Schema" ID="3373c21b-8a5c-4bae-b2c5-73e6a6638a61" SourceId="1" SourceUrl="http://localhost:5100/PSvc/?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

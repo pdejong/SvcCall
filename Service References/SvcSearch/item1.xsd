@@ -37,7 +37,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="PatientId" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="IdIssuer" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -293,21 +292,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetDerived">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ImageId" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="Info" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDerivedResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.microsoft.com/Message" name="GetDerivedResult" type="q20:StreamBody" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetReport">
     <xs:complexType>
       <xs:sequence>
@@ -318,7 +302,7 @@
   <xs:element name="GetReportResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.microsoft.com/Message" name="GetReportResult" type="q21:StreamBody" />
+        <xs:element xmlns:q20="http://schemas.microsoft.com/Message" name="GetReportResult" type="q20:StreamBody" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

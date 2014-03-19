@@ -2,21 +2,17 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8074F697-2D2E-4B72-86A0-60AE4A49B386}</ProjectGuid>
+    <ProjectGuid>{C21660C5-49E6-4FEA-8403-8896C13FD289}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SvcCall</RootNamespace>
-    <AssemblyName>SvcCall</AssemblyName>
-    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+    <RootNamespace>SiriusSVCcall</RootNamespace>
+    <AssemblyName>SiriusSVCcall</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -33,7 +29,8 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -41,24 +38,30 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>IO.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -71,12 +74,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\PCreate\Reference.cs">
+    <Compile Include="Service References\SvcCreate\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\PSearch\Reference.cs">
+    <Compile Include="Service References\SvcSearch\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -105,57 +108,38 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\PCreate\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PCreate\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PCreate\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PCreate\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PCreate\PCreateSvc.wsdl" />
-    <None Include="Service References\PSearch\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PSearch\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PSearch\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PSearch\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PSearch\item4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PSearch\item5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PSearch\PSearchSvc.wsdl" />
-    <None Include="Service References\PSearch\SvcCall.PSearch.Image.datasource">
+    <None Include="Service References\SvcCreate\item.wsdl" />
+    <None Include="Service References\SvcCreate\item.xsd" />
+    <None Include="Service References\SvcCreate\item1.xsd" />
+    <None Include="Service References\SvcCreate\item2.xsd" />
+    <None Include="Service References\SvcCreate\item3.xsd" />
+    <None Include="Service References\SvcCreate\PCreateSvc.wsdl" />
+    <None Include="Service References\SvcSearch\item.xsd" />
+    <None Include="Service References\SvcSearch\item1.xsd" />
+    <None Include="Service References\SvcSearch\item2.xsd" />
+    <None Include="Service References\SvcSearch\item3.xsd" />
+    <None Include="Service References\SvcSearch\item4.xsd" />
+    <None Include="Service References\SvcSearch\item5.xsd" />
+    <None Include="Service References\SvcSearch\PSearchSvc.wsdl" />
+    <None Include="Service References\SvcSearch\SiriusSVCcall.SvcSearch.Image.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\PSearch\SvcCall.PSearch.Meridian.datasource">
+    <None Include="Service References\SvcSearch\SiriusSVCcall.SvcSearch.Meridian.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\PSearch\SvcCall.PSearch.Patient.datasource">
+    <None Include="Service References\SvcSearch\SiriusSVCcall.SvcSearch.Patient.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\PSearch\SvcCall.PSearch.PeripheralDegreesModule.datasource">
+    <None Include="Service References\SvcSearch\SiriusSVCcall.SvcSearch.PeripheralDegreesModule.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\PSearch\SvcCall.PSearch.Refraction.datasource">
+    <None Include="Service References\SvcSearch\SiriusSVCcall.SvcSearch.Refraction.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\PSearch\SvcCall.PSearch.Report.datasource">
+    <None Include="Service References\SvcSearch\SiriusSVCcall.SvcSearch.Report.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\PSearch\SvcCall.PSearch.Study.datasource">
+    <None Include="Service References\SvcSearch\SiriusSVCcall.SvcSearch.Study.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
@@ -163,20 +147,52 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SvcCreate\" />
+    <WCFMetadataStorage Include="Service References\SvcSearch\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SvcCreate\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SvcCreate\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SvcCreate\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SvcCreate\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SvcSearch\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SvcSearch\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SvcSearch\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SvcSearch\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IO.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 und x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
       <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
-      <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
@@ -188,37 +204,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\PCreate\" />
-    <WCFMetadataStorage Include="Service References\PSearch\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PSearch\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PSearch\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PSearch\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PCreate\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PCreate\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PCreate\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\img_SchwindLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

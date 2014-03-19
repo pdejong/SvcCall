@@ -27,6 +27,12 @@
     <xs:sequence />
   </xs:complexType>
   <xs:element name="Auditable" nillable="true" type="tns:Auditable" />
+  <xs:complexType name="UnconfiguredWebServiceException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UnconfiguredWebServiceException" nillable="true" type="tns:UnconfiguredWebServiceException" />
   <xs:complexType name="InvalidParameterException">
     <xs:sequence>
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
@@ -34,12 +40,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="InvalidParameterException" nillable="true" type="tns:InvalidParameterException" />
-  <xs:complexType name="UnconfiguredWebServiceException">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="UnconfiguredWebServiceException" nillable="true" type="tns:UnconfiguredWebServiceException" />
   <xs:complexType name="ArrayOfStudy">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Study" nillable="true" type="tns:Study" />
@@ -56,7 +56,6 @@
           <xs:element minOccurs="0" name="StudyId" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="AccessionNumber" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="PatientsAge" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="StudyDateString" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="StudyTimeString" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="PatientsFirstName" nillable="true" type="xs:string" />
@@ -98,8 +97,6 @@
           <xs:element minOccurs="0" name="StudyDateString" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="StudyTimeString" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="StudyDateTime" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="SeriesNumber" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="InstanceNumber" nillable="true" type="xs:int" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -136,7 +133,6 @@
       <xs:element minOccurs="0" name="ReportId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ReportDateString" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ReportTimeString" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="StudyId" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Report" nillable="true" type="tns:Report" />
