@@ -28,6 +28,7 @@ namespace SiriusSVCcall {
                 create_dateTimePicker.Value = DateTime.Parse("1967-04-01");
                 create_send.Enabled = true;
                 txt_Comment.Text = "Comment";
+                txt_AccessionNumber.Text = "AN" + DateTime.Now.ToString("yyyyMMddHHmmss");
             }
             else {
                 create_ID.Clear();
@@ -36,6 +37,7 @@ namespace SiriusSVCcall {
                 create_dateTimePicker.Value = DateTime.Parse("2012-12-31");
                 txt_Age.Clear();
                 txt_Comment.Clear();
+                txt_AccessionNumber.Clear();
             }
         }
 
@@ -73,7 +75,7 @@ namespace SiriusSVCcall {
             }
             catch { // patient exists..
             }
-            client.ScheduleProcedure(create_ID.Text, DateTime.Now, "AN" + DateTime.Now.ToString("yyyyMMddHHmmss"), "");
+            client.ScheduleProcedure(create_ID.Text, DateTime.Now, txt_AccessionNumber.Text, "");
             // you might want to insert other checks on validity of the refractive data...
             if (refraction_OD_Sph.Value != 0) {
                 client.AddRefraction(create_ID.Text, (float)refraction_OD_Sph.Value, (float)refraction_OD_Cyl.Value, (int)refraction_OD_ax.Value, refraction_OD_UcVA.Text, refraction_OS_BCVA.Text,
@@ -85,7 +87,7 @@ namespace SiriusSVCcall {
                 if (procs.Length == 1) {
                     procs[0].Kill();
                 }
-                Process.Start(m_Phoenix, string.Format("\"PatientId=\\\"{0}\\\"\"", create_ID.Text));
+                Process.Start(m_Phoenix, cmb_Args.SelectedIndex == 1 ? string.Format("\"AccessionNumber=\\\"{0}\\\"\"", txt_AccessionNumber.Text) : string.Format("\"PatientId=\\\"{0}\\\"\"", create_ID.Text));
             }
 
         }
@@ -109,6 +111,10 @@ namespace SiriusSVCcall {
             }
             chk_RestartPhoenix.Enabled = File.Exists(m_Phoenix);
             if (!chk_RestartPhoenix.Enabled) chk_RestartPhoenix.Checked = false;
+        }
+
+        private void chk_RestartPhoenix_CheckedChanged(object sender, EventArgs e) {
+            cmb_Args.Enabled = chk_RestartPhoenix.Checked;
         }
     }
 }

@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.groupBox_create = new System.Windows.Forms.GroupBox();
+            this.chk_RestartPhoenix = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btn_RefractionOD = new System.Windows.Forms.Button();
@@ -78,7 +79,9 @@
             this.create_send = new System.Windows.Forms.Button();
             this.lbl_PatientId = new System.Windows.Forms.Label();
             this.create_ID = new System.Windows.Forms.TextBox();
-            this.chk_RestartPhoenix = new System.Windows.Forms.CheckBox();
+            this.cmb_Args = new System.Windows.Forms.ComboBox();
+            this.lbl_AccessionNumber = new System.Windows.Forms.Label();
+            this.txt_AccessionNumber = new System.Windows.Forms.TextBox();
             this.groupBox_create.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -98,6 +101,9 @@
             // 
             // groupBox_create
             // 
+            this.groupBox_create.Controls.Add(this.lbl_AccessionNumber);
+            this.groupBox_create.Controls.Add(this.txt_AccessionNumber);
+            this.groupBox_create.Controls.Add(this.cmb_Args);
             this.groupBox_create.Controls.Add(this.chk_RestartPhoenix);
             this.groupBox_create.Controls.Add(this.tabControl1);
             this.groupBox_create.Controls.Add(this.pbx_Logo);
@@ -124,11 +130,24 @@
             this.groupBox_create.TabIndex = 4;
             this.groupBox_create.TabStop = false;
             // 
+            // chk_RestartPhoenix
+            // 
+            this.chk_RestartPhoenix.AutoSize = true;
+            this.chk_RestartPhoenix.Checked = true;
+            this.chk_RestartPhoenix.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_RestartPhoenix.Location = new System.Drawing.Point(14, 302);
+            this.chk_RestartPhoenix.Name = "chk_RestartPhoenix";
+            this.chk_RestartPhoenix.Size = new System.Drawing.Size(107, 17);
+            this.chk_RestartPhoenix.TabIndex = 61;
+            this.chk_RestartPhoenix.Text = "(Re)start Phoenix";
+            this.chk_RestartPhoenix.UseVisualStyleBackColor = true;
+            this.chk_RestartPhoenix.CheckedChanged += new System.EventHandler(this.chk_RestartPhoenix_CheckedChanged);
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(9, 103);
+            this.tabControl1.Location = new System.Drawing.Point(9, 124);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(432, 168);
@@ -758,17 +777,33 @@
             this.create_ID.Size = new System.Drawing.Size(200, 20);
             this.create_ID.TabIndex = 0;
             // 
-            // chk_RestartPhoenix
+            // cmb_Args
             // 
-            this.chk_RestartPhoenix.AutoSize = true;
-            this.chk_RestartPhoenix.Checked = true;
-            this.chk_RestartPhoenix.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_RestartPhoenix.Location = new System.Drawing.Point(14, 302);
-            this.chk_RestartPhoenix.Name = "chk_RestartPhoenix";
-            this.chk_RestartPhoenix.Size = new System.Drawing.Size(107, 17);
-            this.chk_RestartPhoenix.TabIndex = 61;
-            this.chk_RestartPhoenix.Text = "(Re)start Phoenix";
-            this.chk_RestartPhoenix.UseVisualStyleBackColor = true;
+            this.cmb_Args.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Args.FormattingEnabled = true;
+            this.cmb_Args.Items.AddRange(new object[] {
+            "Open Phoenix",
+            "Immediate Acquire"});
+            this.cmb_Args.Location = new System.Drawing.Point(146, 300);
+            this.cmb_Args.Name = "cmb_Args";
+            this.cmb_Args.Size = new System.Drawing.Size(157, 21);
+            this.cmb_Args.TabIndex = 62;
+            // 
+            // lbl_AccessionNumber
+            // 
+            this.lbl_AccessionNumber.AutoSize = true;
+            this.lbl_AccessionNumber.Location = new System.Drawing.Point(6, 106);
+            this.lbl_AccessionNumber.Name = "lbl_AccessionNumber";
+            this.lbl_AccessionNumber.Size = new System.Drawing.Size(74, 13);
+            this.lbl_AccessionNumber.TabIndex = 64;
+            this.lbl_AccessionNumber.Text = "Exam number:";
+            // 
+            // txt_AccessionNumber
+            // 
+            this.txt_AccessionNumber.Location = new System.Drawing.Point(81, 103);
+            this.txt_AccessionNumber.Name = "txt_AccessionNumber";
+            this.txt_AccessionNumber.Size = new System.Drawing.Size(200, 20);
+            this.txt_AccessionNumber.TabIndex = 63;
             // 
             // Form2
             // 
@@ -861,5 +896,8 @@
         private System.Windows.Forms.Button btn_RefractionOS;
         private System.Windows.Forms.Button btn_PatientOS;
         private System.Windows.Forms.CheckBox chk_RestartPhoenix;
+        private System.Windows.Forms.ComboBox cmb_Args;
+        private System.Windows.Forms.Label lbl_AccessionNumber;
+        private System.Windows.Forms.TextBox txt_AccessionNumber;
     }
 }
